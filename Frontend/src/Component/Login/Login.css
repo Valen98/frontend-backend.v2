@@ -1,0 +1,34 @@
+.Login-div{
+    text-align: center;
+    position: absolute;
+    width: 20rem;
+    top:40%;
+    left: 40%;
+}
+.Login-div input{
+    padding:12px 20px;
+    margin: 5px 5px;
+    width: 8rem;
+    height: 4rem;
+    border-radius: 5px;
+}
+.Login-div button {
+    width: 8rem;
+    height: 4rem;
+    border-radius: 5px;
+    margin-top:3px;
+    font-size: 2rem;
+}
+.Login-div button:hover {
+    cursor:pointer;
+    background-color: rgb(38, 51, 42);
+}
+.Login-div button:disabled{
+    cursor: not-allowed;
+}
+
+input:focus{
+    outline:none;
+    background-color: #d4ddd2;
+}
+

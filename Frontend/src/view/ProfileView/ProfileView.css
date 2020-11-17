@@ -1,0 +1,41 @@
+.profile-slider {
+    background: rgb(38, 51, 42);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 150%;
+    height: 100%;
+    transform: translateX(100%);
+}
+.profile-view {
+    height: 100vh;
+    background-image: url('../../Image/forestProfile.jpg');
+    background-size: cover;
+}
+.profile-slideshow{
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+}
+
+.profile-view img {
+    width: 50%;
+    height: 50%;
+    border-radius:50%;
+    margin:5px 0px;
+    border:2px solid black;
+}
+
+.profile-card { 
+    position: absolute;
+    top:15%;
+    left:45%;
+    height: 30vh;
+    width: 30vh;
+    border:0px solid black;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.4);
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+
+}
+
