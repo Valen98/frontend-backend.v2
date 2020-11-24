@@ -64,3 +64,15 @@
     height: 100%;
     transform: translateX(100%);
 }
+
+.logged-in{
+    font-family: 'Trispace', sans-serif;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -30%);
+    font-size: 1rem;
+    color: rgb(38, 51, 42);
+    text-align: center;
+    text-decoration: underline;
+}

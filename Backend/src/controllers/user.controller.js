@@ -4,7 +4,8 @@ import UserModel from '../models/user.model.js'
 const createUser = async (req, res) => {
 	const user = new UserModel({
 		username: req.body.username,
-		password: req.body.password
+        password: req.body.password,
+        isAdmin: req.body.isAdmin,
 	})
 
 	try {

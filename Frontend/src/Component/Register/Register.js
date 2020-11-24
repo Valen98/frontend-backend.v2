@@ -17,9 +17,9 @@ function Register() {
     return (
         <div className="register-form">
             <form>
-                <h1>Register</h1>
-                <h1>Username: </h1> <input onChange={(e) => setNewUser(e.target.value)}/> 
-                <h1>Password</h1> <input onChange={(e) => setNewUserPassword(e.target.value)}/>
+                <h1>NOT A USER YET?</h1>
+                <input onChange={(e) => setNewUser(e.target.value)} placeholder="Username"/> 
+                <input onChange={(e) => setNewUserPassword(e.target.value)} placeholder="Password"/>
                 <button onClick={registerNewUser}>Register</button>
             </form>
         </div>

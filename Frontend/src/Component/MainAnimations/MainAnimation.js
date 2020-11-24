@@ -13,15 +13,33 @@ function MainAnimation() {
         tl.fromTo("nav", {opacity:0}, {opacity: 1, duration:1})
         tl.fromTo(".big-text", { opacity: 0 }, { opacity: 1, duration: 1 }, "-=1");
         tl.fromTo("form", {opacity: 0}, {opacity: 1, duration: 1}, "-=1")
+        tl.fromTo('.logged-in', {opacity: 0}, {opacity:1, duration: 2})
     })
     
+    const signedin = () => {
+        if(!sessionStorage.getItem('username')) {
+            return (
+                <div>
+                    <Login />
+                    <Register />
+                </div>
+            )
+        }else {
+            return (
+                <div className="logged-in">
+                    <h1>You are already logged in as</h1>
+                    <h1>{sessionStorage.getItem('username')}</h1>
+                </div>
+            )
+        }
+    }
+
     return (
         <div className="mainPage">
             <div className="main-result">
                 <section>
                     <h2 className="big-text">ALWAYS LOST</h2>
-                    <Login/>
-                    <Register/>
+                    {signedin()}
                 </section>
                 <div className="intro">
                     <div className="intro-text">

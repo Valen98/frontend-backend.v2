@@ -3,34 +3,30 @@ import React, {useContext, useEffect, useState }from 'react'
 import { useHistory } from 'react-router-dom'
 import { UserContext } from '../../Shared/Global/Provider/UserProvider'
 import './ProfileView.css'
+import Axios from 'axios'
+import Modal from 'react-modal'
+import AdminView from './AdminView'
 
 function ProfileView() {
-    const [authenticatedUser, setAuthenticatedUser] = useContext(UserContext)
-    const [profilePicture, setProfilePicture] = useState({})
+    const [users, setUsers] = useState([])
+    const [editUsername, setEditUsername] = useState()
+    const [editPassword, setEditPassword] = useState()
+    const [modalOpen, setModalOpen] = useState(false)
     const history = useHistory()
-    
+
     useEffect(() => {
-        if(localStorage.getItem('username') === ''){
+        if(!sessionStorage.getItem('username')){
             alert('You must sign in')
             history.push('/')
+        }else{
+            const tl = gsap.timeline({defaults: {ease:"Power1.out"} });
+            tl.to('.profile-slider', {x: '-100%', duration:8 }, '-=3')
+            tl.fromTo('.profile-card', {opacity:0}, {opacity: 1, duration:2}, '-=3')
+            tl.fromTo('.all-users', {opacity: 0}, {opacity: 1, duration:2}, '-=1')
+            tl.fromTo('nav', {opacity:0}, {opacity:1, duration:2}, '-=3')
         }
-        const tl = gsap.timeline({defaults: {ease:"Power1.out"} });
-        tl.to('.profile-slider', {x: '-100%', duration:8 }, '-=3')
-        tl.fromTo('.profile-card', {opacity:0}, {opacity: 1, duration:2}, '-=3')
     }, [])
 
-
-    const displayPicture = () => {
-        if(profilePicture){
-            return(
-                <div>
-                </div>
-            )
-        }else{
-            alert("nothing happened")
-        }
-    }
-    
     return (
         <div className="profile-slideshow">
             <div className="profile-view">
@@ -41,8 +37,10 @@ function ProfileView() {
                     </div>
                 </div>
             </div>
+            <div className="all-users" id="users">
+                <AdminView/>
+            </div>
             <div className="profile-slider">
-                <h1>Always Lost</h1>
             </div>
         </div>
     )

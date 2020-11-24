@@ -29,13 +29,17 @@ function Login() {
         e.preventDefault()
         const response = await Axios.get(`http://localhost:1338/searchuser?username=${username}`)
         try {
-            
             if(response.data[0].password == password) {
-                console.log("Sucess")
+
                 setAuthenticatedUser(response.data)
-                console.log(response.data[0].username)
                 sessionStorage.setItem('username', response.data[0].username)
-                tl.to('.main-result', { x: '-100%', duration: 5})
+
+                //Checks if user is Admin or not
+                if(response.data[0].isAdmin === true) {
+                    sessionStorage.setItem('isAdmin', response.data[0].isAdmin) 
+                }
+                tl.fromTo('nav', {opacity:1}, {opacity:0, duration:1})
+                tl.to('.main-result', { x: '-100%', duration: 5}, '-=1')
                 tl.to('.profile-slider', {x: '-100%', duration:11 }, "-=6")
                 setTimeout(() => history.push('/Profile'), 3000)
             }else{
@@ -51,6 +55,7 @@ function Login() {
     return (
         <div className="Login-div">
             <form className="login">
+                <h1>Login</h1>
                 <input 
                     placeholder="Username" 
                     type="username" className="Username" 

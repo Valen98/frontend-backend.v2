@@ -4,6 +4,7 @@ const UserSchema = mongoose.Schema(
 	{
 		username: String,
 		password: String,
+		isAdmin: Boolean,
 	}, { timestamps: true }
 )
 

@@ -13,13 +13,20 @@ function NavBar() {
         }
     }
 
+    const logout = () => {
+        if(sessionStorage.getItem('username')){
+            return(
+                <button className="Logout" onClick={() => {sessionStorage.clear(); history.go(0)}}>LOGOUT</button>
+            )
+        }
+    }
+
     return (
     <nav>
         <h1 id="logo" onClick={() => checkPath()}>LOST</h1>
         <div className="nav-links">
-            <button className="home" onClick={() => checkPath()}>HOME</button>
-            <button className="about" onClick={() => {history.push('/About')}}>ABOUT</button>
-            <button className="contact" onClick={() => {history.push('/Contact')}}>CONTACT</button>
+            <button className="Profile" onClick={() => {history.push('/Profile')}}>PROFILE</button>
+            {logout()}
         </div>    
     </nav>
     )
