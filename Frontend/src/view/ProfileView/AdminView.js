@@ -7,28 +7,38 @@ const customModalStyle = {
     content : {
         top: '50%',
         left: '50%',
-        right: 'auto',
-        bottom: 'auto',
-        marginRight: '-50%',
         transform: 'translate(-50%, -50%)',
-        width: '50%',
-        height: '10vh',
-        backgroundColor: 'red',
-        overflow: 'none'
+        width: '30%',
+        height: '30%',
+        backgroundColor: 'rgb(38, 51, 42)',
+        boxShadow: '5px 5px 8px rgba(0, 0, 0, 0.5)',
+        border: '0px',
+        padding: '1.5%',
+        overflow: 'none',
     }
 }
 
 function AdminView() {
     const [users, setUsers] = useState([])
-    const [editUsername, setEditUsername] = useState()
-    const [editPassword, setEditPassword] = useState()
+    const [editUsername, setEditUsername] = useState('')
+    const [editPassword, setEditPassword] = useState('')
     const [modalOpen, setModalOpen] = useState(false)
+    const [modalUsername, setModalUsername] = useState()
+    const [modalId, setModalId] = useState()
    
     useEffect(() => {
         fetchAllUsers()
     }, [])
 
-    const openModal = () => {
+    function validateForm() {
+        if( editPassword.length > 0){
+            return true
+        }
+    }
+
+    const openModal = (username, id) => {
+        setModalUsername(username)
+        setModalId(id)
         setModalOpen(true)
     }
     const closeModal = () => {
@@ -57,21 +67,35 @@ function AdminView() {
     }
 
     const editUser = async (id) => {
-        Axios.put(`http://localhost:1338/user/${id}`, {username: editUsername, password: editPassword})
+        Axios.put(`http://localhost:1338/user/${id}`, {username: editUsername ,password: editPassword})
         fetchAllUsers()
     }
 
-    const modalForm = (username, id) => {
+    const modalForm = () => {
         return( 
             <Modal
                 isOpen={modalOpen}
                 style={customModalStyle}>
                 <form className="edit-form">
-                    <button onClick={closeModal}>close</button>
-                    <p>You are now Editing User: {username}</p>
-                    <input placeholder="username" onChange={(e) => setEditUsername(e.target.value)}></input>
-                    <input placeholder="password" onChange={(e) => setEditPassword(e.target.value)}></input>
-                    <button onClick={() => {editUser(id)}}>Submit Edit</button>
+                    <p>You are now Editing User: <h3>{modalUsername}</h3></p>
+
+                    <h3>Change Username </h3>
+                    <div className="input-fields">
+                        <input 
+                            placeholder="New Username" 
+                            type="username" 
+                            className="Username" 
+                            onChange={(e) => setEditUsername(e.target.value)}>
+                        </input>
+                    </div>
+
+                    <h3>Change Password</h3>
+                    <div className="input-fields">
+                        <input placeholder="New/old Password" onChange={(e) => setEditPassword(e.target.value)}></input>
+                    </div>
+
+                    <button onClick={() => {editUser(modalId)}} id="submit-edit" disabled={!validateForm()}>Submit Edit</button>
+                    <button onClick={closeModal} id="modal-close">Cancel</button>
                 </form>
             </Modal>
         )
@@ -84,8 +108,8 @@ function AdminView() {
                     <h1>All Users</h1>
                     {users.map(newData => (
                         <ul className="users-list">
-                                <li className={newData.username}>Username: {newData.username }</li>
-                                <button id="edit" onClick={openModal}>Edit this user</button>
+                                <li className={newData.username}>Username: {newData.username}</li>
+                                <button id="edit" onClick={() => openModal(newData.username, newData._id)}>Edit this user</button>
                                 <button onClick={() => {deleteUser(newData._id)}}>&#10060;</button>
                                 {console.log(newData.username)}
                         </ul>

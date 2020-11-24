@@ -69,7 +69,19 @@
     background-color: rgb(38, 51, 42);
 }
 .edit-form {
-    width: 30%;
+    text-align: center;
+}
+
+.input-fields {
+    position: relative;
+    left:50%;
+    transform: translateX(-50%);
+}
+.edit-form input{
+    padding:5px;
+    width: 8rem;
+    height: 2rem;
+    border-radius: 5px;
 }
 
 #edit {
@@ -81,4 +93,18 @@
 }
 #edit:hover {
     background-color: rgb(38, 51, 42);
+}
+
+.edit-form button {
+    left:0%;
+    margin: 5% 5%;
+    position: relative;
+    background-color: rgba(255, 255, 255, 0.4);
+    font-size: 1rem;
+    padding: 3px 3px;
+    box-shadow: 5px 5px 8px rgba(0, 0, 0, 0.5);
+}
+
+.edit-form button:hover {
+    cursor: pointer;
 }
