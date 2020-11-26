@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import './Register.css'
 
 function Register() {
-    const [Data, setData] = useState([])
     const [newUser, setNewUser] = useState()
     const [newUserPassword, setNewUserPassword] = useState()
     

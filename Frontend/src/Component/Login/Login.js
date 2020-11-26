@@ -3,7 +3,6 @@ import { gsap } from 'gsap'
 import './Login.css'
 import { useHistory } from 'react-router-dom'
 import userProvider, { UserContext } from '../../Shared/Global/Provider/UserProvider'
-import ProfileView from '../../view/ProfileView/ProfileView'
 import Axios from 'axios'
 
 function Login() {

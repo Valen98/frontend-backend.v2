@@ -3,7 +3,7 @@ import  {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 import AboutView from '../view/AboutView'
 import ContactView from '../view/ContactView'
 import HomeView from '../view/HomeView'
-import ProfileView from '../view/ProfileView/ProfileView'
+import ProfileView from '../view/ProfileView'
 function Routing(props) {
     return (
         <Router>

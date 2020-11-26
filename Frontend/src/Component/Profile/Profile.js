@@ -1,17 +1,10 @@
 import gsap from 'gsap'
-import React, {useContext, useEffect, useState }from 'react'
+import React, {useEffect}from 'react'
 import { useHistory } from 'react-router-dom'
-import { UserContext } from '../../Shared/Global/Provider/UserProvider'
-import './ProfileView.css'
-import Axios from 'axios'
-import Modal from 'react-modal'
-import AdminView from './AdminView'
+import './Profile.css'
+import Admin from './Admin'
 
-function ProfileView() {
-    const [users, setUsers] = useState([])
-    const [editUsername, setEditUsername] = useState()
-    const [editPassword, setEditPassword] = useState()
-    const [modalOpen, setModalOpen] = useState(false)
+function Profile() {
     const history = useHistory()
 
     useEffect(() => {
@@ -38,7 +31,7 @@ function ProfileView() {
                 </div>
             </div>
             <div className="all-users" id="users">
-                <AdminView/>
+                <Admin/>
             </div>
             <div className="profile-slider">
             </div>
@@ -46,4 +39,4 @@ function ProfileView() {
     )
 }
 
-export default ProfileView
+export default Profile

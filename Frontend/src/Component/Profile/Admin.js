@@ -1,5 +1,5 @@
 import React, {useEffect, useState }from 'react'
-import './ProfileView.css'
+import './Profile.css'
 import Axios from 'axios'
 import Modal from 'react-modal'
 
@@ -18,7 +18,7 @@ const customModalStyle = {
     }
 }
 
-function AdminView() {
+function Admin() {
     const [users, setUsers] = useState([])
     const [editUsername, setEditUsername] = useState('')
     const [editPassword, setEditPassword] = useState('')
@@ -70,7 +70,7 @@ function AdminView() {
         Axios.put(`http://localhost:1338/user/${id}`, {username: editUsername ,password: editPassword})
         fetchAllUsers()
     }
-
+    //TODO: VALIDATION HANDLER IN MODAL
     const modalForm = () => {
         return( 
             <Modal
@@ -128,4 +128,4 @@ function AdminView() {
     )
 }
 
-export default AdminView
+export default Admin
