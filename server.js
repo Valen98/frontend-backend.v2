@@ -19,7 +19,7 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}))
 userRoutes.routes(app)
 app.use(middlewares.notFound)
 app.use(middlewares.errorHandler)
-
+console.log("new text")
 Configuration.connectToDatabase()
 Configuration.connectToPort(app)
 
