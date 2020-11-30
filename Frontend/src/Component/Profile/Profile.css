@@ -45,8 +45,14 @@
     z-index: 10;
     text-align: center;
     width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 50%;
 }
 .all-users h1{
+    width: 100%;
+    position: fixed;
+    top:45%;
     border-bottom: 2px solid rgb(38, 51, 42);
     font-size: 2.5rem;
 }
@@ -71,7 +77,6 @@
 .edit-form {
     text-align: center;
 }
-
 .input-fields {
     position: relative;
     left:50%;
@@ -107,4 +112,25 @@
 
 .edit-form button:hover {
     cursor: pointer;
+}
+
+.refresh {
+    justify-content: center;
+    display: flex;
+    position: absolute;
+    z-index: 14;
+    left:97%;
+    bottom: 93%;
+    transform: translateX(50%);
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+}
+.refresh:hover{
+    background-color: rgb(38, 51, 42);
+    cursor: pointer;
+}
+.refresh:focus{
+    outline: none;
 }
