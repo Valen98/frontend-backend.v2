@@ -6,10 +6,10 @@
   "type": "module",
   "scripts": {
     "server": "nodemon server.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cd Frontend && npm run build",
     "install-frontend": "cd Frontend && npm install",
-    "heroku-postbuild": "npm run install-frontend && npm run build"
+    "heroku-postbuild": "npm run install-frontend && npm run build",
+    "test": "mocha 'tests/**'"
   },
   "keywords": [
     "RESTAPI",
@@ -30,7 +30,10 @@
     "node": "^15.0.1"
   },
   "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^7.13.0",
+    "mocha": "^8.2.1",
     "nodemon": "^2.0.6"
   }
 }
