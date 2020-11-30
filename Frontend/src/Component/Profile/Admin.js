@@ -105,6 +105,7 @@ function Admin() {
         if(sessionStorage.getItem('isAdmin')){
             return(
                 <div>
+                    <button className="refresh" onClick={fetchAllUsers}>&#8634;</button>
                     <h1>All Users</h1>
                     {users.map(newData => (
                         <ul className="users-list">

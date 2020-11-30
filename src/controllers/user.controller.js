@@ -31,7 +31,8 @@ const updateUser = async (req, res) => {
         if(!req.body) {return res.status(400).send({message: 'Cannot update empty values'})}
         const response = await UserModel.findByIdAndUpdate(req.params.userId, {
             username: req.body.username,
-            password: req.body.password
+            password: req.body.password,
+            isAdmin: req.body.isAdmin
         })
         res.status(200).send(response)
     }catch (error) {
