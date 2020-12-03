@@ -13,7 +13,7 @@ const errorHandler = (error, req, res, next) => {
     res.json({
         statusCode: statusCode,
         message: error.message,
-        stacktrace: process.env.ENVIROMENT === 'PRODUCTION' ? 'AHAH' : error.stack
+        stacktrace: error.stack
     })
 }
 
